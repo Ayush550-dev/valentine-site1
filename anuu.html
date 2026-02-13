@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valentine Proposal</title>
+
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            background: rgba(255,255,255,0.3);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .heart {
+            font-size: 60px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #666;
+            color: white;
+        }
+
+        #text {
+            margin-top: 15px;
+            font-size: 18px;
+            color: red;
+        }
+
+        #finalMessage {
+            font-size: 40px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="container">
+
+    <h1 id="question">Will you be my valentine?</h1>
+
+    <div class="heart">❤️</div>
+
+    <div id="buttons">
+        <button id="yesBtn" onclick="sayYes()">Yes</button>
+        <button id="noBtn" onclick="sayNo()">No</button>
+    </div>
+
+    <div id="text"></div>
+
+    <div id="finalMessage">
+        yayaayya i lovee youuu soooo muchhh anuuu ❤️
+    </div>
+
+</div>
+
+<script>
+    let noClicks = 0;
+
+    function sayNo() {
+        noClicks++;
+
+        let noBtn = document.getElementById("noBtn");
+
+        // shrink button
+        let scale = 1 - (noClicks * 0.3);
+        noBtn.style.transform = "scale(" + scale + ")";
+
+        if (noClicks >= 3) {
+            noBtn.style.display = "none";
+            document.getElementById("text").innerHTML = "say yess already 😤";
+        }
+    }
+
+    function sayYes() {
+        document.getElementById("question").style.display = "none";
+        document.querySelector(".heart").style.display = "none";
+        document.getElementById("buttons").style.display = "none";
+        document.getElementById("text").style.display = "none";
+
+        document.getElementById("finalMessage").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
